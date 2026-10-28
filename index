@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Una pregunta importante 🐶</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #fff3f5;
+      color: #49343c;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+      padding: 32px 24px;
+      text-align: center;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px #d9a6b533;
+    }
+
+    h1 {
+      font-size: 27px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 13px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    .primary {
+      background: #e98ba7;
+      color: white;
+      margin-top: 18px;
+    }
+
+    .primary:hover {
+      background: #d96d91;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .dog-photo {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 16px;
+      margin-top: 12px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      min-height: 70px;
+    }
+
+    #yes {
+      background: #79b895;
+      color: white;
+    }
+
+    #no {
+      background: #efb5bd;
+      color: #603d45;
+      position: relative;
+    }
+
+    #success {
+      font-size: 22px;
+      color: #438762;
+      font-weight: bold;
+    }
+
+    .heart {
+      font-size: 42px;
+      margin: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+
+    <!-- PASO 1: CHISTE -->
+    <section id="step1">
+      <div class="heart">☕</div>
+      <h1>Antes de empezar...</h1>
+      <p>
+        ¿Qué le dijo un café a otro café?
+      </p>
+      <p><strong>¡Qué pasa, cafecito!</strong></p>
+      <p>Perdón. Era necesario que sufrieras esto primero.</p>
+      <button class="primary" onclick="nextStep(2)">
+        Siguiente →
+      </button>
+    </section>
+
+    <!-- PASO 2: FOTO DEL PERRO -->
+    <section id="step2" class="hidden">
+      <h1>Bueno, ahora algo importante 🐶</h1>
+
+      <p>Te presento a un miembro importante de esta propuesta.</p>
+
+      <!-- Guarda la foto como perro.jpg en el mismo repositorio -->
+      <img
+        class="dog-photo"
+        src="perro.jpg"
+        alt="Un perro muy importante"
+        onerror="this.style.display='none'; document.getElementById('photoHelp').style.display='block';"
+      >
+
+      <p id="photoHelp" style="display:none; color:#a45c70;">
+        Aquí aparecerá tu perro cuando subas la foto como
+        <strong>perro.jpg</strong> al repositorio.
+      </p>
+
+      <p>Él no puede invitarte a un café. Así que me toca a mí.</p>
+
+      <button class="primary" onclick="nextStep(3)">
+        Siguiente →
+      </button>
+    </section>
+
+    <!-- PASO 3: LA PREGUNTA -->
+    <section id="step3" class="hidden">
+      <div class="heart">☕🐶</div>
+      <h1>Una pregunta importante...</h1>
+      <p>¿Quieres ir a tomar un café conmigo?</p>
+
+      <div class="buttons" id="buttons">
+        <button id="yes" onclick="accept()">
+          Sí ❤️
+        </button>
+
+        <button id="no" onmouseenter="escapeNo()"
+                onclick="escapeNo()" ontouchstart="escapeNo()">
+          No 🙃
+        </button>
+      </div>
+    </section>
+
+    <!-- RESPUESTA POSITIVA -->
+    <section id="step4" class="hidden">
+      <div class="heart">💗</div>
+      <h1>¡Sabía que elegirías bien!</h1>
+      <p>Entonces tenemos una cita pendiente.</p>
+      <p>El café lo pongo yo. El chiste malo ya estaba incluido.</p>
+      <div class="heart">🐶☕</div>
+    </section>
+
+  </main>
+
+  <script>
+    function nextStep(number) {
+      document.querySelectorAll("main section").forEach(section => {
+        section.classList.add("hidden");
+      });
+
+      document.getElementById("step" + number)
+        .classList.remove("hidden");
+    }
+
+    function escapeNo() {
+      const button = document.getElementById("no");
+      const margin = 20;
+
+      // Mueve el botón a una posición aleatoria visible.
+      button.style.position = "fixed";
+
+      const maxX = window.innerWidth - button.offsetWidth - margin;
+      const maxY = window.innerHeight - button.offsetHeight - margin;
+
+      const x = Math.max(margin, Math.random() * maxX);
+      const y = Math.max(margin, Math.random() * maxY);
+
+      button.style.left = x + "px";
+      button.style.top = y + "px";
+      button.style.zIndex = "10";
+    }
+
+    function accept() {
+      nextStep(4);
+    }
+  </script>
+</body>
+</html>
