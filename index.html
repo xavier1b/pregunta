@@ -119,12 +119,10 @@
     <!-- PASO 1: CHISTE -->
     <section id="step1">
       <div class="heart">☕</div>
-      <h1>Antes de empezar...</h1>
+      <h1>Una adivinanza...</h1>
       <p>
-        ¿Qué le dijo un café a otro café?
+        ¿Cuál es el oso que cuenta chistes?
       </p>
-      <p><strong>¡Qué pasa, cafecito!</strong></p>
-      <p>Perdón. Era necesario que sufrieras esto primero.</p>
       <button class="primary" onclick="nextStep(2)">
         Siguiente →
       </button>
@@ -132,9 +130,8 @@
 
     <!-- PASO 2: FOTO DEL PERRO -->
     <section id="step2" class="hidden">
-      <h1>Bueno, ahora algo importante 🐶</h1>
+      <h1>¡El ChistOso!! xD</h1>
 
-      <p>Te presento a un miembro importante de esta propuesta.</p>
 
       <!-- Guarda la foto como perro.jpg en el mismo repositorio -->
       <img
@@ -144,13 +141,6 @@
         onerror="this.style.display='none'; document.getElementById('photoHelp').style.display='block';"
       >
 
-      <p id="photoHelp" style="display:none; color:#a45c70;">
-        Aquí aparecerá tu perro cuando subas la foto como
-        <strong>perro.jpg</strong> al repositorio.
-      </p>
-
-      <p>Él no puede invitarte a un café. Así que me toca a mí.</p>
-
       <button class="primary" onclick="nextStep(3)">
         Siguiente →
       </button>
@@ -159,17 +149,16 @@
     <!-- PASO 3: LA PREGUNTA -->
     <section id="step3" class="hidden">
       <div class="heart">☕🐶</div>
-      <h1>Una pregunta importante...</h1>
-      <p>¿Quieres ir a tomar un café conmigo?</p>
+      <h1>Quieres ir por un café?</h1>
 
       <div class="buttons" id="buttons">
         <button id="yes" onclick="accept()">
-          Sí ❤️
+          Sí 
         </button>
 
         <button id="no" onmouseenter="escapeNo()"
                 onclick="escapeNo()" ontouchstart="escapeNo()">
-          No 🙃
+          No 
         </button>
       </div>
     </section>
